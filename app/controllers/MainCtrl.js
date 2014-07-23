@@ -13,4 +13,22 @@ myApp.controller('MainController',
 				console.log('error');
 
 			});
+		$scope.submit = function(book){
+			console.log(book);
+			$http.post('http://localhost:3000/book',
+				{
+					name: book.name,
+					genre: book.genre,
+					autho: book.author
+				})
+
+			.success( function(data, status, headers, config){
+				console.log("SUCCESS");
+			})
+
+			.error(function(data, status, headers, config){
+				console.log('error');
+
+			});
+        };
 }]);

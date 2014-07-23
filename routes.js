@@ -13,11 +13,11 @@ module.exports = {
 		app.post('/book', function(req, res, next){
 
 			var book = new Book({
-				name: 	req.query.name,
-				author: req.query.author,
-				rating: req.query.rating,
-				genre: 	req.query.genre,
-				poster: req.query.poster
+				name: 	req.body.name,
+				author: req.body.author,
+				rating: req.body.rating,
+				genre: 	req.body.genre,
+				poster: req.body.poster
 			});
 
 			book.save(function(err){

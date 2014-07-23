@@ -9,13 +9,24 @@
 	<div ng-controller="MainController">
 
 		<h1>Inventory</h1>
+		<h2>See books</h2>
 		<input type="search" ng-model="input" placeholder="filter books..." />
 		<ul class="example-animate-container">
 			<li class="animate-repeat" ng-repeat="book in books | filter:input">
 			{{book.name}} by {{ book.author }}
 			</li>
 		</ul>
+
+		<h2>Add book</h2>
+		<form ng-submit="submit(book)">
+			<input type="name" ng-model="book.name" placeholder="name" />
+			<input type="author" ng-model="book.author" placeholder="author" />
+			<input type="genre" ng-model="book.genre" placeholder="genre" />
+  			<input type="submit" id="submit" value="Submit" />
+		</form>
 	</div>
+
+
 	<!--Vendors-->
  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
 
