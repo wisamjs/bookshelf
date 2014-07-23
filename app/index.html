@@ -18,12 +18,14 @@
 		</ul>
 
 		<h2>Add book</h2>
-		<form name="newBookForm" ng-submit="submit(book)">
-			<input type="name" ng-model="book.name" placeholder="name" />
-			<input type="author" ng-model="book.author" placeholder="author" />
-			<input type="genre" ng-model="book.genre" placeholder="genre" />
-  			<input type="submit" id="submit" value="Submit" />
-		</form>
+		<div ng-controller="FormController">
+			<form name="newBookForm" ng-submit="submit(book)">
+				<input type="name" ng-model="book.name" placeholder="name" />
+				<input type="author" ng-model="book.author" placeholder="author" />
+				<input type="genre" ng-model="book.genre" placeholder="genre" />
+	  			<input type="submit" id="submit" value="Submit" />
+			</form>
+		</div>
 	</div>
 
 
@@ -35,6 +37,7 @@
 
 	<!-- Controllers -->
 	<script src="controllers/MainCtrl.js"></script>
+	<script src="controllers/FormCtrl.js"></script>
 
 	<!-- Services -->
 	<script src="services/library.js"></script>
