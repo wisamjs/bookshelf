@@ -6,6 +6,17 @@ var gulp = require('gulp'),
 	stylish = require('jshint-stylish'),
 	livereload = require('gulp-livereload');
 
+var jsControllers = 'app/controllers/*.js',
+	jsServices = 'app/services/.js',
+	jsServer = '*.js',
+	jsAngular = 'app/app.js',
+	jsFiles = [
+		jsControllers,
+		jsServices,
+		jsServer,
+		jsAngular];
+
+
 // Precompile Sass
 gulp.task('sass', function() {
 
@@ -18,16 +29,9 @@ gulp.task('sass', function() {
 
 //Jshint all JS files
 gulp.task('lint',function(){
-	return gulp.src(
-		[
-			'*.js',
-			'app/app.js',
-			'app/controllers/*.js',
-			'app/services/.js'
-		])
-
+	gulp.src(jsFiles)
 	.pipe(jshint())
-	.pipe(jshint.reporter('jshint-stylish'));
+	.pipe(jshint.reporter(stylish));
 });
 
 //update HTML with livereload
@@ -41,6 +45,7 @@ gulp.task('html', function(){
 gulp.task('watch', function() {
   gulp.watch('app/styles/*.scss', ['sass']);
   gulp.watch('app/index.html', ['html']);
+  gulp.watch(jsFiles, ['lint']);
 });
 
 
