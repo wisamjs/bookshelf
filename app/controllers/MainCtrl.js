@@ -1,3 +1,5 @@
+'use strict';
+
 myApp.controller('MainController',
 	['$scope','$http', 'Library', function($scope,$http, Library){
 
@@ -5,13 +7,15 @@ myApp.controller('MainController',
 
 			.then(function(data){
 
+
+
 				//promise fulfilled
 				$scope.books =  data;
 
 			}, function(error){
 
 				//promise rejected
-				console.log('error');
+				console.log('error' + error);
 			});
 
 

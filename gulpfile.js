@@ -1,3 +1,5 @@
+'use strict';
+
 //Load all Gulp modules
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
@@ -30,7 +32,10 @@ gulp.task('sass', function() {
 //Jshint all JS files
 gulp.task('lint',function(){
 	gulp.src(jsFiles)
-	.pipe(jshint())
+	.pipe(jshint({curly: true, globals: {
+        'myApp': false,
+        'angular': false,
+    }}))
 	.pipe(jshint.reporter(stylish));
 });
 

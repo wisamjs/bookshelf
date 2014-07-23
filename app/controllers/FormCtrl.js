@@ -1,10 +1,12 @@
+'use strict';
+
 myApp.controller('FormController',
 	['$scope','$http', 'Library', function($scope,$http, Library){
 
 		var defaultForm = {
-			name: "",
-			author: "",
-			genre: ""
+			name: '',
+			author: '',
+			genre: ''
 		};
 
 
@@ -12,8 +14,7 @@ myApp.controller('FormController',
 
 			Library.addBook(book)
 
-			.then(function(data){
-
+			.then(function(){
 				//promise fulfilled
 				//Add book and clear form
 				$scope.books.push(book);
@@ -23,7 +24,7 @@ myApp.controller('FormController',
 
 			function(error){
 				//promise rejected
-				console.log('error');
+				console.log('error' + error);
 			});
         };
 

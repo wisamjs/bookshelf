@@ -1,2 +1,3 @@
 'use strict';
-var myApp = angular.module('MyApp', []);
+/*global myApp*/
+var myApp = angular.module('MyApp',[]);

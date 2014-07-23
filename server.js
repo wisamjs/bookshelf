@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 //Load Modules
 var mongoose = require('mongoose'),
@@ -23,12 +23,12 @@ app.use(express.static(path.join(__dirname, 'app')));
 mongoose.connect('localhost/newDB');
 
 mongoose.connection.on('connected',function(){
-	console.log("Connection successful");
+	console.log('Connection successful');
 
 });
 
-mongoose.connection.on('error', function(err){
-	console.log('error',error);
+mongoose.connection.on('error', function(error){
+	console.log('error' + error);
 });
 
 //Routes
