@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 	express = require('express'),
 	bodyParser = require('body-parser'),
 	routes = require('./routes'),
+	path = require('path'),
 	Book = require('./models/book');
 
 //Express setup
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'app')));
 
 
 
