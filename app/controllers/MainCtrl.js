@@ -1,34 +1,33 @@
 myApp.controller('MainController',
-	['$scope','$http', function($scope,$http){
+	['$scope','$http', 'Library', function($scope,$http, Library){
 
-		$scope.books;
-		$http.get('http://localhost:3000/books')
+		$scope.getBooks = Library.getBooks()
 
-			.success( function(data, status, headers, config){
-				$scope.books = data;
-				console.log(data);
-			})
+			.then(function(data){
 
-			.error(function(data, status, headers, config){
+				//promise fulfilled
+				$scope.books =  data;
+
+			}, function(error){
+
+				//promise rejected
 				console.log('error');
-
 			});
+
 		$scope.submit = function(book){
-			console.log(book);
-			$http.post('http://localhost:3000/book',
-				{
-					name: book.name,
-					genre: book.genre,
-					autho: book.author
-				})
 
-			.success( function(data, status, headers, config){
-				console.log("SUCCESS");
-			})
+			Library.addBook(book)
 
-			.error(function(data, status, headers, config){
+			.then(function(data){
+				//promise fulfilled
+				console.log('success');
+			},
+
+			function(error){
+				//promise rejected
 				console.log('error');
-
 			});
         };
+
+
 }]);
