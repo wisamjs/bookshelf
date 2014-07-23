@@ -1,5 +1,5 @@
 {
-  "name": "inventory",
+  "name": "bookshelf",
   "version": "0.0.0",
   "description": "mean application",
   "main": "server.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wzaghal/inventory.git"
+    "url": "https://github.com/wzaghal/bookshelf.git"
   },
   "keywords": [
     "mean",
@@ -21,9 +21,9 @@
   "author": "wzaghal",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wzaghal/inventory/issues"
+    "url": "https://github.com/wzaghal/bookshelf/issues"
   },
-  "homepage": "https://github.com/wzaghal/inventory",
+  "homepage": "https://github.com/wzaghal/bookshelf",
   "devDependencies": {
     "express": "^4.6.1",
     "body-parser": "^1.4.3",
