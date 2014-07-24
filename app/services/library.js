@@ -11,6 +11,7 @@ angular.module('MyApp')
 				name: book.name,
 				genre: book.genre,
 				author: book.author,
+				poster: book.poster
 			})
 
 			.then( function(){
@@ -46,7 +47,8 @@ angular.module('MyApp')
 				//promise rejected
 				return $q.reject(response.data);
 			});
-
 		}
-	}
+
+
+	};
 }]);

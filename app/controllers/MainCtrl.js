@@ -11,6 +11,7 @@ myApp.controller('MainController',
 
 				//promise fulfilled
 				$scope.books =  data;
+				console.log(data);
 
 			}, function(error){
 

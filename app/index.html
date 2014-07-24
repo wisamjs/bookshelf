@@ -13,9 +13,13 @@
 		<h2>See books</h2>
 		<input type="search" ng-model="input" placeholder="filter books..." />
 		<ul class="bookshelf">
+
 			<li ng-repeat="book in books | filter:input" class="book">
-			{{book.name}} by {{ book.author }}
+					<img ng-src={{book.poster}} alt="">
+					<div class="back-cover"></div>
+					<div class="book-pages"></div>
 			</li>
+
 		</ul>
 		<button ng-click="clear()">clear</button>
 
@@ -25,6 +29,7 @@
 				<input type="name" ng-model="book.name" placeholder="name" />
 				<input type="author" ng-model="book.author" placeholder="author" />
 				<input type="genre" ng-model="book.genre" placeholder="genre" />
+				<input type="poster" ng-model="book.poster" placeholder="poster" />
 	  			<input type="submit" id="submit" value="Submit" />
 			</form>
 		</div>
