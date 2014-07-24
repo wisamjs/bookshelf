@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 	livereload = require('gulp-livereload');
 
 var jsControllers = 'app/controllers/*.js',
-	jsServices = 'app/services/.js',
+	jsServices = 'app/services/*.js',
 	jsServer = '*.js',
 	jsAngular = 'app/app.js',
 	jsFiles = [

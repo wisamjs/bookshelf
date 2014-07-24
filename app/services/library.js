@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('MyApp')
   .factory('Library', ['$http', function($http, $q) {
     return {
@@ -11,7 +13,7 @@ angular.module('MyApp')
 				author: book.author,
 			})
 
-			.then( function(response){
+			.then( function(){
 				//promise fulfilled
 				console.log('success');
 			},
@@ -24,7 +26,6 @@ angular.module('MyApp')
 		},
 
 		getBooks: function(){
-			var thedata;
 
 			return $http.get('http://localhost:3000/books')
 

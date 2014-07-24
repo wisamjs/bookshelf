@@ -12,11 +12,12 @@
 		<h1>Inventory</h1>
 		<h2>See books</h2>
 		<input type="search" ng-model="input" placeholder="filter books..." />
-		<ul>
-			<li ng-repeat="book in books | filter:input">
+		<ul class="bookshelf">
+			<li ng-repeat="book in books | filter:input" class="book">
 			{{book.name}} by {{ book.author }}
 			</li>
 		</ul>
+		<button ng-click="clear()">clear</button>
 
 		<h2>Add book</h2>
 		<div ng-controller="FormController">
