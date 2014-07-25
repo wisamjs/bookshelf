@@ -5,8 +5,7 @@ var mongoose = require('mongoose'),
 	express = require('express'),
 	bodyParser = require('body-parser'),
 	routes = require('./routes'),
-	path = require('path'),
-	Book = require('./models/book');
+	path = require('path');
 
 //Express setup
 var app = express();
@@ -32,7 +31,7 @@ mongoose.connection.on('error', function(error){
 });
 
 //Routes
-routes.load(app,mongoose, Book);
+routes.load(app,mongoose);
 
 //Start server
 app.listen( app.get('port'),function(){
