@@ -5,7 +5,7 @@ angular.module('MyApp')
     return {
 
     	addBook: function(book ){
-    		return $http.post('http://localhost:3000/book',
+    		return $http.post('/book',
 
 	    	{
 				name: book.name,
@@ -28,7 +28,7 @@ angular.module('MyApp')
 
 		getBooks: function(){
 
-			return $http.get('http://localhost:3000/books')
+			return $http.get('/books')
 
 			.then(function(response){
 
