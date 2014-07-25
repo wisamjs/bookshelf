@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'app')));
 
 
 //Database Connection
-mongoose.connect('localhost/newDB');
+mongoose.connect('process.env.MONGODB_URL');
 
 mongoose.connection.on('connected',function(){
 	console.log('Connection successful');
