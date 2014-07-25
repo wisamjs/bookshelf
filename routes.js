@@ -1,7 +1,12 @@
 'use strict';
 
 module.exports = {
-	load: function(app, mongoose, Book){
+	load: function(app, mongoose){
+
+		//load modules
+		var Book = require('./models/book'),
+			http = require('http'),
+			xml2js = require('xml2js');
 
 		//middleware to enable CORS
 		app.all('*', function(req, res, next) {
@@ -30,7 +35,7 @@ module.exports = {
 		});
 
 		//get all books
-		app.get('/books',function (req, res){
+		app.get('/books',function(req, res){
 
 			Book.find(function(err,books){
 				res.json(books);
@@ -58,6 +63,41 @@ module.exports = {
 				}
 				res.send(book);
 			});
+		});
+
+
+
+		app.get('/search' , function(req, res){
+
+			var xmlResponse='',
+				parser = new xml2js.Parser(),
+				options = {
+  					host: 'www.librarything.com',
+  					path: '/services/rest/1.1/?method=librarything.ck.getwork&name=' + encodeURIComponent(req.query.name)+'&apikey=d231aa37c9b4f5d304a60a3d0ad1dad4'
+				};
+
+
+			http.request(options, function(response) {
+
+  				//add chunk of data
+  				response.on('data', function (chunk) {
+    				xmlResponse += chunk;
+    				console.log('1');
+  				});
+
+  				//response has been received
+  				response.on('end', function () {
+
+  					//parse xml to json
+  					parser.parseString(xmlResponse, function(err,result){
+  						res.send(result);
+
+  					});
+  				});
+
+			}).end();
+
+
 		});
 
 
