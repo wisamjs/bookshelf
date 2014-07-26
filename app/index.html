@@ -25,6 +25,12 @@
 
 		<h2>Add book</h2>
 		<div ng-controller="FormController">
+			<form name="newBookForm" ng-submit="search(book)">
+				<input type="text" ng-model="book.name" placeholder="name"/>
+			</form>
+		</div>
+
+<!-- 		<div ng-controller="FormController">
 			<form name="newBookForm" ng-submit="submit(book)">
 				<input type="name" ng-model="book.name" placeholder="name" />
 				<input type="author" ng-model="book.author" placeholder="author" />
@@ -32,7 +38,7 @@
 				<input type="poster" ng-model="book.poster" placeholder="poster" />
 	  			<input type="submit" id="submit" value="Submit" />
 			</form>
-		</div>
+		</div> -->
 	</div>
 
 
@@ -47,6 +53,7 @@
 	<script src="controllers/FormCtrl.js"></script>
 
 	<!-- Services -->
+	<script src="services/book.js"></script>
 	<script src="services/library.js"></script>
 
 </body>

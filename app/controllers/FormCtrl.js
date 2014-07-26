@@ -1,7 +1,7 @@
 'use strict';
 
 myApp.controller('FormController',
-	['$scope','$http', 'Library', function($scope,$http, Library){
+	['$scope','$http', 'Library', function($scope ,$http , Library){
 
 		var defaultForm = {
 			name: '',
@@ -26,6 +26,19 @@ myApp.controller('FormController',
 				//promise rejected
 				console.log('error' + error);
 			});
+        };
+
+        $scope.search = function(bookTitle){
+        	Library.searchBook(bookTitle)
+
+        	.then( function(data){
+        		$scope.results = Library.parse(data);
+
+        	},
+
+        	function(error){
+        		console.log(error);
+        	});
         };
 
 	}]);

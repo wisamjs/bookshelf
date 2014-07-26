@@ -71,6 +71,8 @@ module.exports = {
 			var respData = '',
 				apiHostname = 'www.googleapis.com',
 				apiPath='/books/v1/volumes?key='+process.env.API_KEY+'&q=',
+
+				//name param is encoded to be URI syntax friendly
 				options = {
   					hostname: apiHostname,
   					path: apiPath + encodeURIComponent(req.query.name)
