@@ -40,6 +40,12 @@ img{
 .book{
 	position:relative;
 
+	i{
+		position:absolute;
+		left:15px;
+		z-index:10;
+	}
+
 }
 
 .back-cover{
@@ -60,3 +66,6 @@ img{
 	top:-130px;
 	left:20px;
 }
+
+
+

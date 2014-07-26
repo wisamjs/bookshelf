@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="styles/index.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -36,9 +37,10 @@
 				<h2>Results</h2>
 				<ul class="bookshelf">
 					<li ng-repeat="book in results" class="book">
-						<img ng-src={{book.poster.thumbnail}} alt="http://www.newscientist.com/blogs/culturelab/catching_fire.jpg">
+						<img ng-src={{book.poster}} alt="http://www.newscientist.com/blogs/culturelab/catching_fire.jpg">
 						<div class="back-cover"></div>
 						<div class="book-pages"></div>
+						<i class="fa fa-plus-circle" ng-click="submit(book)"></i>
 					</li>
 				</ul>
 			</div>
