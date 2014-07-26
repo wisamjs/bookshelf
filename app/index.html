@@ -23,22 +23,27 @@
 		</ul>
 		<button ng-click="clear()">clear</button>
 
-		<h2>Add book</h2>
+
 		<div ng-controller="FormController">
+			<!-- add book -->
+			<h2>Add book</h2>
 			<form name="newBookForm" ng-submit="search(book)">
 				<input type="text" ng-model="book.name" placeholder="name"/>
 			</form>
+
+			<div ng-if="results">
+			<!-- disply search results -->
+				<h2>Results</h2>
+				<ul class="bookshelf">
+					<li ng-repeat="book in results" class="book">
+						<img ng-src={{book.poster.thumbnail}} alt="http://www.newscientist.com/blogs/culturelab/catching_fire.jpg">
+						<div class="back-cover"></div>
+						<div class="book-pages"></div>
+					</li>
+				</ul>
+			</div>
 		</div>
 
-<!-- 		<div ng-controller="FormController">
-			<form name="newBookForm" ng-submit="submit(book)">
-				<input type="name" ng-model="book.name" placeholder="name" />
-				<input type="author" ng-model="book.author" placeholder="author" />
-				<input type="genre" ng-model="book.genre" placeholder="genre" />
-				<input type="poster" ng-model="book.poster" placeholder="poster" />
-	  			<input type="submit" id="submit" value="Submit" />
-			</form>
-		</div> -->
 	</div>
 
 
