@@ -96,6 +96,16 @@ module.exports = {
 
 		});
 
+		app.delete('/remove/:id', function(req, res, next){
+				Book.remove({ _id: req.params.id}, function(err){
+					if (err){
+						return next(err);
+					}else{
+						res.send({ message: 'deleted'});
+					}
+				});
+		});
+
 
 	}
 };

@@ -49,6 +49,20 @@ angular.module('MyApp')
 			});
 		},
 
+		removeBook: function(book){
+			return $http.delete('/remove/'+book._id)
+
+			.then( function(){
+				//promise fulfilled
+				console.log('success');
+			},
+
+			function(response){
+				//promise rejected
+				return $q.reject(response.data);
+			});
+		},
+
 		/* service that makes a request to '/search'
 		   and returns a fulfilled or rejected promise
 		*/

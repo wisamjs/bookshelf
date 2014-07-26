@@ -19,5 +19,22 @@ myApp.controller('MainController',
 				console.log('error' + error);
 			});
 
+		$scope.remove = function(book){
+
+			//remove from db
+			Library.removeBook(book)
+
+				.then(function(){
+
+					//remove from front-end array
+					$scope.books.pop(book);
+				},
+
+				function(err){
+					console.log(err);
+				});
+
+		};
+
 
 }]);
