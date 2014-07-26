@@ -99,7 +99,7 @@ angular.module('MyApp')
 						result.authors,
 						result.averageRating,
 						result.categories,
-						result.imageLinks
+						result.imageLinks.thumbnail
 					)
 				);
 			}
