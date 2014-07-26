@@ -1,12 +1,11 @@
 'use strict';
 
 module.exports = {
-	load: function(app, mongoose){
+	load: function(app){
 
 		//load modules
 		var Book = require('./models/book'),
-			http = require('http'),
-			xml2js = require('xml2js');
+			https = require('https');
 
 		//middleware to enable CORS
 		app.all('*', function(req, res, next) {
@@ -66,33 +65,28 @@ module.exports = {
 		});
 
 
-
+		//get book info from Google Books Api
 		app.get('/search' , function(req, res){
 
-			var xmlResponse='',
-				parser = new xml2js.Parser(),
+			var respData = '',
+				apiHostname = 'www.googleapis.com',
+				apiPath='/books/v1/volumes?key='+process.env.API_KEY+'&q=',
 				options = {
-  					host: 'www.librarything.com',
-  					path: '/services/rest/1.1/?method=librarything.ck.getwork&name=' + encodeURIComponent(req.query.name)+'&apikey=d231aa37c9b4f5d304a60a3d0ad1dad4'
+  					hostname: apiHostname,
+  					path: apiPath + encodeURIComponent(req.query.name)
 				};
 
 
-			http.request(options, function(response) {
+			https.request(options, function(response) {
 
   				//add chunk of data
   				response.on('data', function (chunk) {
-    				xmlResponse += chunk;
-    				console.log('1');
+    				respData += chunk;
   				});
 
   				//response has been received
   				response.on('end', function () {
-
-  					//parse xml to json
-  					parser.parseString(xmlResponse, function(err,result){
-  						res.send(result);
-
-  					});
+  					res.send(respData);
   				});
 
 			}).end();

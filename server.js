@@ -31,7 +31,7 @@ mongoose.connection.on('error', function(error){
 });
 
 //Routes
-routes.load(app,mongoose);
+routes.load(app);
 
 //Start server
 app.listen( app.get('port'),function(){
