@@ -20,6 +20,7 @@ myApp.controller('MainController',
 			});
 
 		$scope.remove = function(book){
+			console.log(book);
 
 			//remove from db
 			Library.removeBook(book)

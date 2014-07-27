@@ -6,7 +6,7 @@ angular.module('MyApp')
 
 		//constructor
 		function Book(id, name, author, rating, genre, poster){
-			this.id = id;
+			this._id = id;
 			this.name = name;
 			this.author = author;
 			this.rating = rating;

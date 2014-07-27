@@ -4,11 +4,11 @@ angular.module('MyApp')
   .factory('Library', ['$http', '$q','Book', function($http ,$q ,Book ) {
     return {
 
-    	addBook: function(book ){
+    	addBook: function(book ){`
     		return $http.post('/book',
 
 	    	{
-	    		id: book.id,
+	    		_id: book._id,
 				name: book.name,
 				genre: book.genre,
 				author: book.author,
@@ -51,7 +51,8 @@ angular.module('MyApp')
 		},
 
 		removeBook: function(book){
-			return $http.delete('/remove/'+book.id)
+			console.log('book' + book._id);
+			return $http.delete('/remove/'+book._id)
 
 			.then( function(){
 				//promise fulfilled
