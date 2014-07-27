@@ -4,7 +4,7 @@ angular.module('MyApp')
   .factory('Library', ['$http', '$q','Book', function($http ,$q ,Book ) {
     return {
 
-    	addBook: function(book ){`
+    	addBook: function(book ){
     		return $http.post('/book',
 
 	    	{
