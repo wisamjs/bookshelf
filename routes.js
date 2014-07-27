@@ -18,12 +18,15 @@ module.exports = {
 		app.post('/book', function(req, res, next){
 
 			var book = new Book({
+				_id: req.body.id,
 				name: 	req.body.name,
 				author: req.body.author,
 				rating: req.body.rating,
 				genre: 	req.body.genre,
 				poster: req.body.poster
 			});
+
+
 
 			book.save(function(err){
 				if (err){

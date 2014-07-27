@@ -8,6 +8,7 @@ angular.module('MyApp')
     		return $http.post('/book',
 
 	    	{
+	    		id: book.id,
 				name: book.name,
 				genre: book.genre,
 				author: book.author,
@@ -50,7 +51,7 @@ angular.module('MyApp')
 		},
 
 		removeBook: function(book){
-			return $http.delete('/remove/'+book._id)
+			return $http.delete('/remove/'+book.id)
 
 			.then( function(){
 				//promise fulfilled
@@ -103,17 +104,18 @@ angular.module('MyApp')
 			//loop through results to add books
 			for (i = 0; i < (data.items).length; i++){
 
-				result= data.items[i].volumeInfo;
+				result= data.items[i];
 
 				collection.push(
 
 					new Book(
 
-						result.title,
-						result.authors,
-						result.averageRating,
-						result.categories,
-						result.imageLinks.thumbnail
+						result.id,
+						result.volumeInfo.title,
+						result.volumeInfo.authors,
+						result.volumeInfo.averageRating,
+						result.volumeInfo.categories,
+						result.volumeInfo.imageLinks.thumbnail
 					)
 				);
 			}

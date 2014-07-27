@@ -27,7 +27,8 @@ myApp.controller('MainController',
 				.then(function(){
 
 					//remove from front-end array
-					$scope.books.pop(book);
+					$scope.books = _.without($scope.books,book);
+					console.log($scope.books);
 				},
 
 				function(err){

@@ -34,6 +34,7 @@ myApp.controller('FormController',
 
         	.then( function(data){
         		$scope.results = Library.parse(data);
+        		console.log($scope.results);
 
         	},
 

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
 	bookSchema = new mongoose.Schema({
+		_id: String,
 		name: String,
 		author: String,
 		rating: Number,
