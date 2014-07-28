@@ -6,9 +6,15 @@
 }
 
 //General selectors
+
 body{
 
 	background:#bada55;
+	font-family: 'Open Sans', sans-serif;
+}
+
+h2{
+	color:white;
 }
 
 ul{
@@ -37,10 +43,22 @@ img{
 }
 
 //Class selectors
-.book{
-	position:relative;
 
+.library{
+
+	background:url('/images/bookshelf.jpg') no-repeat;
+	 background-size:1900px 1000px;
+	 background-position:0px -90px;
+	 padding-bottom:400px;
+}
+
+//Book and related selectors
+
+.book{
+
+	position:relative;
 	i{
+
 		position:absolute;
 		left:15px;
 		z-index:10;

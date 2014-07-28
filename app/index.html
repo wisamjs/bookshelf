@@ -5,29 +5,12 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="styles/index.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
+	<h1>Inventory</h1>
 	<div ng-controller="MainController">
-
-		<h1>Inventory</h1>
-		<h2>See books</h2>
-		<input type="search" ng-model="input" placeholder="filter books..." />
-		<ul class="bookshelf">
-
-			<li ng-repeat="book in books | filter:input" class="book">
-					<img ng-src={{book.poster}} alt="">
-					<div class="back-cover"></div>
-					<div class="book-pages"></div>
-					<i class="fa fa-minus-circle" ng-click="remove(book)"></i>
-
-			</li>
-
-		</ul>
-		<button ng-click="clear()">clear</button>
-
-
-		<div ng-controller="FormController">
+			<div ng-controller="FormController" class="add-book">
 			<!-- add book -->
 			<h2>Add book</h2>
 			<form name="newBookForm" ng-submit="search(book)">
@@ -47,6 +30,23 @@
 				</ul>
 			</div>
 		</div>
+		<div class="user-books library">
+
+			<h2>See books</h2>
+			<input type="search" ng-model="input" placeholder="filter books..." />
+			<ul class="bookshelf">
+
+				<li ng-repeat="book in books | filter:input" class="book">
+						<img ng-src={{book.poster}} alt="">
+						<div class="back-cover"></div>
+						<div class="book-pages"></div>
+						<i class="fa fa-minus-circle" ng-click="remove(book)"></i>
+
+				</li>
+
+			</ul>
+		</div>
+
 
 	</div>
 

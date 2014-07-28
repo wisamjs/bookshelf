@@ -5,7 +5,11 @@
   box-sizing: border-box; }
 
 body {
-  background: #bada55; }
+  background: #bada55;
+  font-family: 'Open Sans', sans-serif; }
+
+h2 {
+  color: white; }
 
 ul {
   list-style-type: none; }
@@ -23,6 +27,12 @@ img {
   height: 150px;
   position: relative;
   z-index: 5; }
+
+.library {
+  background: url('/images/bookshelf.jpg') no-repeat;
+  background-size: 1900px 1000px;
+  background-position: 0px -90px;
+  padding-bottom: 400px; }
 
 .book {
   position: relative; }
