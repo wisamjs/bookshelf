@@ -1,3 +1,10 @@
+//Variables
+$lightBlue : #44C0D9;
+$darkBlue : #252C34;
+$white : #F2F2F2;
+$grey: #C9C9C7;
+
+
 /* border-box*/
 *{
 	-moz-box-sizing: border-box;
@@ -8,13 +15,14 @@
 //General selectors
 
 body{
-
-	background:#bada55;
-	font-family: 'Open Sans', sans-serif;
+	padding: 0 auto;
+	margin: 0 auto;
+	font-family: 'Roboto', san-serif;
 }
-
-h2{
-	color:white;
+h1{
+	text-align:center;
+	font-size:56px;
+	color: #44C0D9;
 }
 
 ul{
@@ -28,37 +36,41 @@ li{
 	padding-left:15px;
 }
 
-input{
-
-	display:block;
-	margin: 5px;
-}
 
 img{
-
 	width:100px;
-	height:150px;
 	position:relative;
 	z-index:5;
 }
 
+header{
+	padding: 150px 0 500px 0;
+
+}
+
 //Class selectors
 
-.library{
+.wrapper{
+	background:url('/images/header.jpg') no-repeat;
+	background-size: 100% 100%;
+	background-position:0px 0px;
 
-	background:url('/images/bookshelf.jpg') no-repeat;
-	 background-size:1900px 1000px;
-	 background-position:0px -90px;
-	 padding-bottom:400px;
+}
+
+.library{
+	display:none; //temporary
+	padding-top:1px;
+	background:url('/images/whiteBookshelf2.jpg') no-repeat;
+	background-size: 100% 100%;
+	background-position:0px 0px;
+	 padding-bottom:800px;
 }
 
 //Book and related selectors
 
 .book{
-
 	position:relative;
 	i{
-
 		position:absolute;
 		left:15px;
 		z-index:10;
@@ -68,7 +80,7 @@ img{
 
 .back-cover{
 
-	background:#000;
+	background:$grey;
 	width:100px;
 	height:150px;
 	position: absolute;
@@ -85,5 +97,27 @@ img{
 	left:20px;
 }
 
+.add-book{
+	text-align: center;
 
 
+	input, button{
+		background:#252C34;
+		padding:15px;
+		border:none;
+		outline:none;
+		margin:-2px;
+		box-shadow: 10px 10px 5px #AAAAAA;
+		color: $white;
+	}
+	input{
+
+		border-top-left-radius:10px;
+		border-bottom-left-radius:10px;
+		border-right:1px solid black;
+	}
+	button{
+		border-top-right-radius:10px;
+		border-bottom-right-radius:10px;
+	}
+}
