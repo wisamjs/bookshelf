@@ -6,30 +6,37 @@
 	<link rel="stylesheet" href="styles/index.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<h1>Inventory</h1>
 	<div ng-controller="MainController">
-			<div ng-controller="FormController" class="add-book">
-			<!-- add book -->
-			<h2>Add book</h2>
-			<form name="newBookForm" ng-submit="search(book)">
-				<input type="text" ng-model="book.name" placeholder="name"/>
-			</form>
+		<div class="wrapper">
+			<header>
+				<h1>Bookshelf</h1>
 
-			<div ng-if="results">
-			<!-- disply search results -->
-				<h2>Results</h2>
-				<ul class="bookshelf">
-					<li ng-repeat="book in results" class="book">
-						<img ng-src={{book.poster}} alt="http://www.newscientist.com/blogs/culturelab/catching_fire.jpg">
-						<div class="back-cover"></div>
-						<div class="book-pages"></div>
-						<i class="fa fa-plus-circle" ng-click="submit(book)"></i>
-					</li>
-				</ul>
-			</div>
+				<div ng-controller="FormController" class="add-book">
+				<div class="add-book">
+
+					<form name="newBookForm" ng-submit="search(book)">
+						<input type="text" name="title" ng-model="book.name" placeholder="1984"/>
+						<button>Search</button>
+					</form>
+				</div>
+
+				<div class="results" ng-if="results">
+				<!-- disply search results -->
+					<ul class="bookshelf" >
+						<li ng-repeat="book in results" class="book">
+							<img ng-src={{book.poster}} alt="http://www.newscientist.com/blogs/culturelab/catching_fire.jpg">
+							<div class="back-cover"></div>
+							<div class="book-pages"></div>
+							<i class="fa fa-plus-circle" ng-click="submit(book)"></i>
+						</li>
+					</ul>
+				</div>
+			</header>
 		</div>
+
 		<div class="user-books library">
 
 			<h2>See books</h2>
