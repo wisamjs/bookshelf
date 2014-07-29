@@ -44,7 +44,7 @@ img{
 }
 
 header{
-	padding: 150px 0 500px 0;
+	padding: 300px 0 300px 0;
 
 }
 
@@ -52,13 +52,13 @@ header{
 
 .wrapper{
 	background:url('/images/header.jpg') no-repeat;
-	background-size: 100% 100%;
+	background-size: cover;
 	background-position:0px 0px;
 
 }
 
 .library{
-	display:none; //temporary
+	//display:none; //temporary
 	padding-top:1px;
 	background:url('/images/whiteBookshelf2.jpg') no-repeat;
 	background-size: 100% 100%;
@@ -121,3 +121,5 @@ header{
 		border-bottom-right-radius:10px;
 	}
 }
+
+

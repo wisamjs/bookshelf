@@ -23,9 +23,11 @@
 					</form>
 				</div>
 
-				<div class="results" ng-if="results">
+				<div class="results">
 				<!-- disply search results -->
-					<ul class="bookshelf" >
+					<i class="fa fa-arrow-circle-o-left" ng-click="getPrevResults()"></i>
+					<i class="fa fa-arrow-circle-o-right" ng-click="getNextResults()"></i>
+					<ul class="bookshelf"  ng-if="results" >
 						<li ng-repeat="book in results" class="book">
 							<img ng-src={{book.poster}} alt="http://www.newscientist.com/blogs/culturelab/catching_fire.jpg">
 							<div class="back-cover"></div>
@@ -72,6 +74,8 @@
 	<!-- Services -->
 	<script src="services/book.js"></script>
 	<script src="services/library.js"></script>
+	<script src="services/results.js"></script>
+
 
 </body>
 </html>
