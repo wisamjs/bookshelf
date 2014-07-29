@@ -48,20 +48,20 @@ myApp.controller('FormController',
         //probably needs to go somewhere else
         $scope.getPrevResults = function(){
 
-        	var updatedResults;
+        	var updatedResults = Results.getPrevResults();
         	//only update if a change needs to be made
-        	if ( updatedResults = Results.getPrevResults()){
+        	if ( updatedResults){
         		$scope.results = updatedResults;
         	}
-        }
+        };
 
         //update results on page
         //probably needs to go somewhere else
         $scope.getNextResults = function(){
 
-        	var updatedResults;
+        	var updatedResults = Results.getPrevResults();
         	//only update if a change needs to be made
-        	if ( updatedResults = Results.getNextResults()){
+        	if ( updatedResults){
         		$scope.results = updatedResults;
         	}
         };
