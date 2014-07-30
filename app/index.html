@@ -9,60 +9,13 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div ng-controller="MainController">
-		<div class="wrapper">
-			<header>
-				<h1>Bookshelf</h1>
-
-				<div ng-controller="FormController" class="add-book">
-				<div class="add-book">
-
-					<form name="newBookForm" ng-submit="search(book)">
-						<input type="text" name="title" ng-model="book.name" placeholder="1984"/>
-						<button>Search</button>
-					</form>
-				</div>
-
-				<div class="results">
-				<!-- disply search results -->
-					<i class="fa fa-arrow-circle-o-left" ng-click="getPrevResults()"></i>
-					<i class="fa fa-arrow-circle-o-right" ng-click="getNextResults()"></i>
-					<ul class="bookshelf"  ng-if="results" >
-						<li ng-repeat="book in results" class="book">
-							<img ng-src={{book.poster}} alt="http://www.newscientist.com/blogs/culturelab/catching_fire.jpg">
-							<div class="back-cover"></div>
-							<div class="book-pages"></div>
-							<i class="fa fa-plus-circle" ng-click="submit(book)"></i>
-						</li>
-					</ul>
-				</div>
-			</header>
-		</div>
-
-		<div class="user-books library">
-
-			<h2>See books</h2>
-			<input type="search" ng-model="input" placeholder="filter books..." />
-			<ul class="bookshelf">
-
-				<li ng-repeat="book in books | filter:input" class="book">
-						<img ng-src={{book.poster}} alt="">
-						<div class="back-cover"></div>
-						<div class="book-pages"></div>
-						<i class="fa fa-minus-circle" ng-click="remove(book)"></i>
-
-				</li>
-
-			</ul>
-		</div>
-
-
-	</div>
+	<ng-view></ng-view>
 
 
 	<!--Vendors-->
  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
  	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+ 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
 
  	<!--Modules-->
  	<script src="app.js"></script>
