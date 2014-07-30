@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = {
-	load: function(app){
+	load: function(app,passport,User){
 
 		//load modules
-		var Book = require('./models/book'),
+		var Book = require('../models/book'),
 			https = require('https');
 
 		//middleware to enable CORS
@@ -13,6 +13,53 @@ module.exports = {
     		res.header('Access-Control-Allow-Headers', 'X-Requested-With');
     		next();
 		});
+
+		//Protect routes from unauthenticated requests
+		var auth = function ensureAuthenticated(req, res, next) {
+  			if (req.isAuthenticated()){
+  				console.log(req);
+  				next();
+  			}
+  			else{
+  				res.send(401);
+  			}
+		}
+
+
+		//signup
+		app.post('/signup', function( req, res, next){
+
+			var user = new User({
+				email: req.body.email,
+				password: req.body.password
+			});
+
+			user.save(function( err){
+				if (err){
+					return next(err);
+				}
+				res.send(200);
+			})
+		});
+
+		//login
+		app.post('/login', passport.authenticate('local'), function(req, res) {
+  			res.cookie('user', JSON.stringify(req.user));
+  			res.send(req.user);
+		});
+
+		//logout
+		app.get('/logout', function( req, res, next){
+			req.logout();
+			res.send(200);
+		});
+
+		//check if user is logged in or not
+		app.get('/loggedin', function(req, res) {
+
+			res.send(req.isAuthenticated() ? req.user : '0');
+		});
+
 
 		//add book
 		app.post('/book', function(req, res, next){
@@ -37,7 +84,7 @@ module.exports = {
 		});
 
 		//get all books
-		app.get('/books',function(req, res){
+		app.get('/books', auth, function(req, res){
 
 			Book.find(function(err,books){
 				res.json(books);
@@ -99,6 +146,7 @@ module.exports = {
 
 		});
 
+		//remove a book from Google Books api
 		app.delete('/remove/:id', function(req, res, next){
 				Book.remove({ _id: req.params.id}, function(err){
 					if (err){
