@@ -5,8 +5,7 @@ module.exports = {
 
 		//load modules
 		var Book = require('../models/book'),
-			url = require('url'),
-			proxy = url.parse(process.env.PROXIMO_URL),
+		url = require('url'),
 			https = require('https');
 
 		//middleware to enable CORS
@@ -119,21 +118,23 @@ module.exports = {
 
 		//get book info from Google Books Api
 		app.get('/search' , function(req, res){
-			console.log('searching');
 
 			var respData = '',
 				apiHostname = 'www.googleapis.com',
 				apiPath='/books/v1/volumes?key='+process.env.API_KEY+'&q=',
+				proxy = url.parse(process.env.PROXIMO_URL),
+
 
 				//proxy is added to allow heroku to have a static
 				//ip address for Google books api
 				//name param is encoded to be URI syntax friendly
 				options = {
   					hostname: proxy.hostname,
-  					port: proxy.port || 8080,
+  					port: proxy.port || 80,
   					path: apiHostname + apiPath + encodeURIComponent(req.query.name),
-  					headers: {
-  						"Proxy-Authorization": "Basic " + (new Buffer(proxy.auth).toString("base64"))
+  					headers : {
+    					'Proxy-Authorization': 'Basic ' + (new Buffer(proxy.auth).toString('base64')),
+    					'Host': apiHostname
   					}
 				};
 
@@ -149,6 +150,8 @@ module.exports = {
   				response.on('end', function () {
   					res.send(respData);
   				});
+
+  				console.log('test');
 
 			}).end();
 
