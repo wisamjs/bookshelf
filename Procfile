@@ -1,1 +1,1 @@
-web: proximo/bin/proximo node server.js
+web: node server.js
