@@ -2,7 +2,9 @@
 var myApp =
 
 angular.module('MyApp', ['ngRoute'])
- .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+    .config(['$locationProvider', '$routeProvider', '$httpProvider', function($locationProvider, $routeProvider, $httpProvider) {
+
+
 
 
   	/*locationProvider is a built in
@@ -11,9 +13,36 @@ angular.module('MyApp', ['ngRoute'])
   	*/
   	$locationProvider.html5Mode(true);
 
+        $httpProvider.responseInterceptors.push(function($q, $location) {
+
+        return function(promise) {
+            return promise.then(
+                // Success: just return the response
+                function(response) {
+                    return response;
+                },
+
+                // Error: check the error status to get only the 401
+                function(response) {
+                    if (response.status === 401){
+                        $location.url('/');
+                    }
+
+                    return $q.reject(response);
+                }
+            );
+        };
+    });
+
   	//Routes
   	$routeProvider
 	  	.when('/', {
-		    templateUrl: 'views/home.html'
-		  });
+		    templateUrl: 'views/login.html'
+		  })
+        .when('/home', {
+            templateUrl: 'views/home.html'
+        })
+        .otherwise({
+            redirectTo: '/'
+          });
   }]);

@@ -4,6 +4,31 @@ angular.module('MyApp')
   .factory('Library', ['$http', '$q','Book', function($http ,$q ,Book ) {
     return {
 
+
+    	login: function(user){
+
+    		console.log(user);
+
+    		return $http.post('/login',
+    		{
+    			email: user.email,
+    			password: user.password
+
+    		})
+
+    		.then( function(resp){
+    			//promise fulfilled
+    			console.log('success');
+    			console.log(resp);
+
+    		},
+
+    		function(response){
+    			console.log('error?');
+    			console.log(response);
+    		});
+    	},
+
     	addBook: function(book ){
     		return $http.post('/book',
 

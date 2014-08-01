@@ -1,11 +1,9 @@
 <div ng-controller="MainController">
-		<div class="wrapper">
-			<header>
-				<h1>Bookshelf</h1>
-
-				<div ng-controller="FormController" class="add-book">
+	<div class="wrapper">
+		<header>
+			<h1>Bookshelf</h1>
+			<div ng-controller="FormController" class="add-book">
 				<div class="add-book">
-
 					<form name="newBookForm" ng-submit="search(book)">
 						<input type="text" name="title" ng-model="book.name" placeholder="1984"/>
 						<button>Search</button>
@@ -25,25 +23,21 @@
 						</li>
 					</ul>
 				</div>
-			</header>
-		</div>
+		</header>
+	</div>
 
-		<div class="user-books library">
-
-			<h2>See books</h2>
-			<input type="search" ng-model="input" placeholder="filter books..." />
+	<div class="user-books library">
+		<h2>See books</h2>
+		<input type="search" ng-model="input" placeholder="filter books..." />
 			<ul class="bookshelf">
-
 				<li ng-repeat="book in books | filter:input" class="book">
-						<img ng-src={{book.poster}} alt="">
+					<img ng-src={{book.poster}} alt="">
 						<div class="back-cover"></div>
 						<div class="book-pages"></div>
 						<i class="fa fa-minus-circle" ng-click="remove(book)"></i>
-
 				</li>
-
 			</ul>
-		</div>
-
-
 	</div>
+
+
+</div>

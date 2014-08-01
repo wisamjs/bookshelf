@@ -1,0 +1,10 @@
+<div ng-controller="LoginController">
+
+	<form name="newBookForm" ng-submit="login(user)">
+	<label for="email">Email</label>
+		<input type="text" name="email" ng-model="user.email"/>
+		<label for="email">Password</label>
+		<input type="password" name="password" ng-model="user.password"/>
+		<button>Submit</button>
+	</form>
+</div>
