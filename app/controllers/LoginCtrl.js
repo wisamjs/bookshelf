@@ -3,12 +3,16 @@
 myApp.controller('LoginController',
 	['$scope', '$location',  'Library', function($scope ,$location , Library){
 
+		$scope.login = false;
+		$scope.signup = false;
+
 		//login user
-		$scope.login = function(user){
+		$scope.loginUser = function(user){
 			Library.login(user)
 
 			.then(function(){
 				//promise fulfilled
+				console.log('logged in');
 				$location.path('/home');
 
 			},

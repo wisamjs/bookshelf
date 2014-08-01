@@ -39,6 +39,7 @@ li{
 
 img{
 	width:100px;
+	height:150px;
 	position:relative;
 	z-index:5;
 }
@@ -49,6 +50,18 @@ header{
 }
 
 //Class selectors
+
+.login{
+	background:url('/images/header.jpg') no-repeat;
+	background-size: cover;
+	background-position:0px 0px;
+	padding: 100px 0 670px 0;
+}
+
+.login-Form{
+
+		text-align:center;
+}
 
 .wrapper{
 	background:url('/images/header.jpg') no-repeat;
@@ -63,7 +76,7 @@ header{
 	background:url('/images/whiteBookshelf2.jpg') no-repeat;
 	background-size: 100% 100%;
 	background-position:0px 0px;
-	 padding-bottom:800px;
+	padding-bottom:800px;
 }
 
 //Book and related selectors
@@ -99,9 +112,9 @@ header{
 
 .add-book{
 	text-align: center;
+}
 
-
-	input, button{
+input, button{
 		background:#252C34;
 		padding:15px;
 		border:none;
@@ -120,4 +133,3 @@ header{
 		border-top-right-radius:10px;
 		border-bottom-right-radius:10px;
 	}
-}
