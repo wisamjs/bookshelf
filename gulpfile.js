@@ -49,7 +49,7 @@ gulp.task('html', function(){
 //watch task to re-run other tasks on save
 gulp.task('watch', function() {
   gulp.watch('app/styles/*.scss', ['sass']);
-  gulp.watch('app/index.html', ['html']);
+  gulp.watch(['app/index.html','app/views/*'], ['html']);
   gulp.watch(jsFiles, ['lint']);
 });
 
