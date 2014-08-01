@@ -27,6 +27,21 @@ myApp.controller('LoginController',
 
 		};
 
+		$scope.signupUser = function(user){
+			Library.signup(user)
+
+			.then(function(){
+
+				console.log('you signed up');
+
+			},
+
+			function(error){
+				console.log(error);
+			});
+
+		};
+
 
 
 	}]);

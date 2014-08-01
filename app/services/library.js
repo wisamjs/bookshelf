@@ -7,7 +7,6 @@ angular.module('MyApp')
 
     	login: function(user){
 
-    		console.log(user);
 
     		return $http.post('/login',
     		{
@@ -27,6 +26,24 @@ angular.module('MyApp')
     			console.log('error?');
     			console.log(response);
     		});
+    	},
+
+    	signup: function(user){
+    		return $http.post('/signup',
+    		{
+    			email : user.email,
+    			password: user.password
+    		})
+
+    		.then( function(response){
+    			//promise fulfilled
+    			console.log(response);
+
+    		},
+
+    		function(response){
+    			console.log(response);
+    		})
     	},
 
     	addBook: function(book ){
