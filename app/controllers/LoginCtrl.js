@@ -3,7 +3,7 @@
 myApp.controller('LoginController',
 	['$scope', '$location',  'Library', function($scope ,$location , Library){
 
-		$scope.login = false;
+		$scope.login = true;
 		$scope.signup = false;
 
 		//login user

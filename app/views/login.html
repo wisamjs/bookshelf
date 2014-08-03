@@ -1,23 +1,29 @@
 	<div class="wrapper" ng-controller="LoginController">
 		<header>
 			<h1>Bookshelf</h1>
-			<button ng-click="login = true; signup = false;">Login</button>
-			<button ng-click = "signup = true; login = false;">Signup</button>
+			<!-- <button ng-click="login = true; signup = false;">Login</button>
+			<button ng-click = "signup = true; login = false;">Signup</button> -->
 			<div ng-controller="LoginController" class="login-Form" ng-if="login">
 				<h4>Login</h4>
-				<form ng-submit="loginUser(user)">
+				<form name="loginForm" ng-submit="loginUser(user)">
+					<input type="text" name="email" ng-model="user.email" ng-minlength="5" ng-maxlength="20" required placeholder="Email"/>
+					<input type="password" name="password" ng-model="user.password" ng-model="user.password" placeholder="Password"/>
+					<button>Submit</button>
+					<div ng-messages="loginForm.email.$error">
+    						<div ng-message="required minlength maxlength" class="error-message">Error Msg</div>
+    						<div ng-message="minlength" class="error-message">Error msg: Minimum Length</div>
+    						<div ng-message="maxlength" class="error-message">Error msg: Maximum Length</div>
+  						</div>
+				</form>
+			</div>
+			<div ng-controller="LoginController" class="signup-Form" ng-if="signup">
+				<h4>Signup</h4>
+				<form ng-submit="signupUser(user)">
 					<input type="text" name="email" ng-model="user.email" placeholder="Email"/>
 					<input type="password" name="password" ng-model="user.password" placeholder="Password"/>
 					<button>Submit</button>
 				</form>
 			</div>
-				<div ng-controller="LoginController" class="login-Form" ng-if="signup">
-					<h4>Signup</h4>
-					<form ng-submit="signupUser(user)">
-						<input type="text" name="email" ng-model="user.email" placeholder="Email"/>
-						<input type="password" name="password" ng-model="user.password" placeholder="Password"/>
-						<button>Submit</button>
-					</form>
-				</div>
+
 		</header>
 	</div>
