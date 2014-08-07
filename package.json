@@ -1,10 +1,11 @@
 {
   "name": "bookshelf",
-  "version": "0.0.0",
+  "version": "0.0.0-11",
   "description": "mean application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -40,5 +41,9 @@
     "express-session": "^1.7.2",
     "bcryptjs": "^2.0.2",
     "passport-local": "^1.0.0"
+  },
+  "subdomain": "wzaghal-bookshelf",
+  "engines": {
+    "node": "0.10.x"
   }
 }
