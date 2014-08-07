@@ -17,7 +17,6 @@ module.exports = {
 		//Protect routes from unauthenticated requests
 		var auth = function ensureAuthenticated(req, res, next) {
   			if (req.isAuthenticated()){
-  				console.log(req);
   				next();
   			}
   			else{
