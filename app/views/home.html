@@ -29,7 +29,7 @@
 	<div class="user-books library">
 		<h2>See books</h2>
 		<input type="search" ng-model="input" placeholder="filter books..." />
-			<ul class="bookshelf">
+			<ul class="user-bookshelf">
 				<li ng-repeat="book in books | filter:input" class="book">
 					<img ng-src={{book.poster}} alt="">
 						<div class="back-cover"></div>
