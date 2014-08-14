@@ -1,23 +1,19 @@
 'use strict';
 
-myApp.controller('MainController',
-	['$scope','$http', 'Library', function($scope,$http, Library){
+angular.module('MyApp')
+	.controller('MainController',
+	['$scope','$http','$log', 'Library', function($scope, $http, $log, Library){
 
 		$scope.getBooks = Library.getBooks()
 
 			.then(function(data){
 
 
-
 				//promise fulfilled
 				$scope.books =  data;
-				console.log(data);
 
-			}, function(error){
-
-				//promise rejected
-				console.log('error' + error);
-			});
+			})
+			.then(null,$log.error);
 
 		$scope.remove = function(book){
 			console.log(book);
@@ -30,11 +26,8 @@ myApp.controller('MainController',
 					//remove from front-end array
 					$scope.books = _.without($scope.books,book);
 					console.log($scope.books);
-				},
-
-				function(err){
-					console.log(err);
-				});
+				})
+				.then(null,$log.error);
 
 		};
 

@@ -1,7 +1,8 @@
 'use strict';
 
-myApp.controller('FormController',
-	['$scope','$http', 'Library', 'Results', function($scope ,$http , Library, Results){
+angular.module('MyApp')
+        .controller('FormController',
+	['$scope','$http', '$log', 'Library', 'Results', function($scope ,$http ,$log, Library, Results){
 
 		var defaultForm = {
 			name: '',
@@ -21,27 +22,20 @@ myApp.controller('FormController',
 				$scope.books.push(book);
 				$scope.newBookForm.$setPristine();
 				$scope.book = angular.copy(defaultForm);
-			},
-
-			function(error){
-				//promise rejected
-				console.log('error' + error);
-			});
+			})
+                        .then(null,$log.error);
         };
 
         $scope.search = function(bookTitle){
         	Library.searchBook(bookTitle)
 
         	.then( function(data){
-
+                        $log.warn('Am I here');
         		//Save results
         		Results.addNewResults(Library.parse(data));
         		$scope.results= Results.getCurrentResults();
-        	},
-
-        	function(error){
-        		console.log(error);
-        	});
+        	})
+                .then(null,$log.error);
         };
 
         //update results on page

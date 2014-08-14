@@ -1,7 +1,8 @@
 'use strict';
 
-myApp.controller('LoginController',
-	['$scope', '$location',  'Library', function($scope ,$location , Library){
+angular.module('MyApp')
+	.controller('LoginController',
+	['$scope', '$location', '$log',  'Library', function($scope, $location, $log, Library){
 
 		$scope.login = true;
 		$scope.signup = false;
@@ -12,15 +13,10 @@ myApp.controller('LoginController',
 
 			.then(function(){
 				//promise fulfilled
-				console.log('logged in');
 				$location.path('/home');
 
-			},
-
-			function(error){
-				//promise rejected
-				console.log('error' + error);
-			});
+			})
+			.then(null,$log.error);
 		};
 
 		$scope.logout = function(){
@@ -32,13 +28,9 @@ myApp.controller('LoginController',
 
 			.then(function(){
 
-				console.log('you signed up');
 
-			},
-
-			function(error){
-				console.log(error);
-			});
+			})
+			.then(null,$log.error);
 
 		};
 

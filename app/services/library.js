@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MyApp')
-  .factory('Library', ['$http', '$q','Book', function($http ,$q ,Book ) {
+  .factory('Library', ['$http', '$log', '$q','Book', function($http, $log, $q, Book) {
     return {
 
 
@@ -13,18 +13,6 @@ angular.module('MyApp')
     			email: user.email,
     			password: user.password
 
-    		})
-
-    		.then( function(resp){
-    			//promise fulfilled
-    			console.log('success');
-    			console.log(resp);
-
-    		},
-
-    		function(response){
-    			console.log('error?');
-    			console.log(response);
     		});
     	},
 
@@ -33,17 +21,7 @@ angular.module('MyApp')
     		{
     			email : user.email,
     			password: user.password
-    		})
-
-    		.then( function(response){
-    			//promise fulfilled
-    			console.log(response);
-
-    		},
-
-    		function(response){
-    			console.log(response);
-    		})
+    		});
     	},
 
     	addBook: function(book ){
@@ -55,16 +33,6 @@ angular.module('MyApp')
 				genre: book.genre,
 				author: book.author,
 				poster: book.poster
-			})
-
-			.then( function(){
-				//promise fulfilled
-				console.log('success');
-			},
-
-			function(response){
-				//promise rejected
-				return $q.reject(response.data);
 			});
 
 		},
@@ -93,18 +61,7 @@ angular.module('MyApp')
 		},
 
 		removeBook: function(book){
-			console.log('book' + book._id);
-			return $http.delete('/remove/'+book._id)
-
-			.then( function(){
-				//promise fulfilled
-				console.log('success');
-			},
-
-			function(response){
-				//promise rejected
-				return $q.reject(response.data);
-			});
+			return $http.delete('/remove/'+book._id);
 		},
 
 		/* service that makes a request to '/search'
@@ -116,22 +73,17 @@ angular.module('MyApp')
 			.then(function(response){
 				if (typeof response.data === 'object'){
 
-					//promise fulfilled
-					console.log('success');
+					//Google Books API returned Error message
+					if (response.data.hasOwnProperty('error')){
+						return $q.reject(response.data.error.message);
+					}
 					return response.data;
 				}else{
-
 					//promise rejected
 					return $q.reject(response.data);
 
 				}
 
-			},
-
-			function(response){
-
-				//promise rejected
-				return $q.reject(response.data);
 			});
 
 		},
