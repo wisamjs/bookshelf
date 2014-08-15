@@ -9,7 +9,7 @@ angular.module('MyApp', ['ngRoute','ngMessages'])
   	AngularJs service for configuring application
   	linking paths.
   	*/
-  	$locationProvider.html5Mode(true);
+  	$locationProvider.html5Mode(false);
 
         $httpProvider.responseInterceptors.push(function($q, $location) {
 
