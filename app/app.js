@@ -1,6 +1,6 @@
 'use strict';
-angular.module('MyApp', ['ngRoute','ngMessages'])
-    .config(['$locationProvider', '$routeProvider', '$httpProvider', function($locationProvider, $routeProvider, $httpProvider) {
+angular.module('MyApp', ['ui.router','ngMessages'])
+    .config(function( $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
 
 
@@ -10,6 +10,7 @@ angular.module('MyApp', ['ngRoute','ngMessages'])
   	linking paths.
   	*/
   	$locationProvider.html5Mode(false);
+    $urlRouterProvider.otherwise('/');
 
         $httpProvider.responseInterceptors.push(function($q, $location) {
 
@@ -32,15 +33,18 @@ angular.module('MyApp', ['ngRoute','ngMessages'])
         };
     });
 
-  	//Routes
-  	$routeProvider
-	  	.when('/', {
-		    templateUrl: 'views/login.html'
-		  })
-        .when('/home', {
-            templateUrl: 'views/home.html'
+    //Routes
+    $stateProvider
+        .state('login',{
+            url:'/',
+            templateUrl: 'views/login.html'
         })
-        .otherwise({
-            redirectTo: '/'
-          });
-  }]);
+
+        .state('home',{
+            url: '/home',
+            templateUrl: 'views/home.html'
+        });
+
+
+
+  });
