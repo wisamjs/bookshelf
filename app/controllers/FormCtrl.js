@@ -23,7 +23,7 @@ angular.module('MyApp')
 				$scope.newBookForm.$setPristine();
 				$scope.book = angular.copy( defaultForm );
 			})
-                        .then( null,$log.error );
+            .then( null,$log.error );
         };
 
         $scope.search = function( bookTitle ) {

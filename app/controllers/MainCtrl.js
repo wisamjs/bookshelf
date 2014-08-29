@@ -16,7 +16,6 @@ angular.module('MyApp')
 			.then( null,$log.error );
 
 		$scope.remove = function( book ) {
-			console.log( book );
 
 			//remove from db
 			Library.removeBook( book )
@@ -25,7 +24,6 @@ angular.module('MyApp')
 
 					//remove from front-end array
 					$scope.books = _.without( $scope.books,book );
-					console.log( $scope.books );
 				})
 				.then( null,$log.error );
 
