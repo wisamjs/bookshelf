@@ -1,18 +1,18 @@
 'use strict';
 
 //Load Modules
-var mongoose = require( 'mongoose' ),
-	express = require( 'express' ),
-	bodyParser = require( 'body-parser' ),
-	path = require( 'path' ),
-	routes = require( './api/routes' ),
-	auth = require( './api/authentication' ),
-	User = require( './models/user' ),
+var mongoose   = require('mongoose'),
+	express    = require('express'),
+	bodyParser = require('body-parser'),
+	path       = require('path'),
+	routes     = require('./api/routes'),
+	auth       = require('./api/authentication'),
+	User       = require('./models/user'),
 
 //Load Authentication Modules
- 	session = require( 'express-session' ),
-	passport = require( 'passport' ),
-	LocalStrategy = require( 'passport-local' ).Strategy,
+ 	session = require('express-session'),
+	passport = require('passport'),
+	LocalStrategy = require('passport-local').Strategy,
 
 //Express setup
 	app = express();
@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({
 
 app.use( bodyParser.json() );
 app.use( express.static( path.join( __dirname, 'app' ) ) );
-app.use( session( { secret: 'Needs more cowbell' } ) );
+app.use( session({ secret: 'Needs more cowbell' }) );
 app.use( passport.initialize() );
 app.use( passport.session() );
 

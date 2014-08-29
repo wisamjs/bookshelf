@@ -1,11 +1,11 @@
-var mongoose = require('mongoose'),
+var mongoose = require( 'mongoose' ),
 	bookSchema = new mongoose.Schema({
-		_id: String,
-		name: String,
+		_id   : String,
+		name  : String,
 		author: String,
 		rating: Number,
-		genre: String,
+		genre : String,
 		poster: String,
 	});
 
-module.exports = mongoose.model('book', bookSchema);
+module.exports = mongoose.model( 'book', bookSchema );
