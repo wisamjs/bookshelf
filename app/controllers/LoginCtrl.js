@@ -1,39 +1,39 @@
 'use strict';
 
 angular.module('MyApp')
-	.controller('LoginController',
-	['$scope', '$location', '$log',  'Library', function($scope, $location, $log, Library){
+	.controller( 'LoginController',
+	function( $scope, $location, $log, Library ) {
 
-		$scope.login = true;
+		$scope.login  = true;
 		$scope.signup = false;
 
 		//login user
-		$scope.loginUser = function(user){
-			Library.login(user)
+		$scope.loginUser = function( user ) {
+			Library.login( user )
 
-			.then(function(){
+			.then(function() {
 				//promise fulfilled
 				$location.path('/home');
 
 			})
-			.then(null,$log.error);
+			.then( null,$log.error );
 		};
 
-		$scope.logout = function(){
+		$scope.logout = function() {
 
 		};
 
-		$scope.signupUser = function(user){
-			Library.signup(user)
+		$scope.signupUser = function( user ){
+			Library.signup( user )
 
-			.then(function(){
+			.then(function() {
 
 
 			})
-			.then(null,$log.error);
+			.then( null,$log.error );
 
 		};
 
 
 
-	}]);
+	});

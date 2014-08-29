@@ -2,34 +2,34 @@
 
 angular.module('MyApp')
 	.controller('MainController',
-	['$scope','$http','$log', 'Library', function($scope, $http, $log, Library){
+	function( $scope, $http, $log, Library ){
 
 		$scope.getBooks = Library.getBooks()
 
-			.then(function(data){
+			.then(function( data ) {
 
 
 				//promise fulfilled
-				$scope.books =  data;
+				$scope.books = data;
 
 			})
-			.then(null,$log.error);
+			.then( null,$log.error );
 
-		$scope.remove = function(book){
-			console.log(book);
+		$scope.remove = function( book ) {
+			console.log( book );
 
 			//remove from db
-			Library.removeBook(book)
+			Library.removeBook( book )
 
-				.then(function(){
+				.then(function() {
 
 					//remove from front-end array
-					$scope.books = _.without($scope.books,book);
-					console.log($scope.books);
+					$scope.books = _.without( $scope.books,book );
+					console.log( $scope.books );
 				})
-				.then(null,$log.error);
+				.then( null,$log.error );
 
 		};
 
 
-}]);
+});

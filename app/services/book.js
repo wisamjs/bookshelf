@@ -2,15 +2,15 @@
 
 
 angular.module('MyApp')
-	.factory('Book', function(){
+	.factory( 'Book', function() {
 
 		//constructor
-		function Book(id, name, author, rating, genre, poster){
-			this._id = id;
-			this.name = name;
+		function Book( id, name, author, rating, genre, poster ) {
+			this._id    = id;
+			this.name   = name;
 			this.author = author;
 			this.rating = rating;
-			this.genre = genre;
+			this.genre  = genre;
 			this.poster = poster;
 		}
 

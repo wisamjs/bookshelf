@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('MyApp')
-  .factory('Library', ['$http', '$log', '$q','Book', function($http, $log, $q, Book) {
+  .factory( 'Library', function( $http, $log, $q, Book ) {
     return {
 
 
-    	login: function(user){
+    	login: function( user ) {
 
 
-    		return $http.post('/login',
+    		return $http.post( '/login',
     		{
     			email: user.email,
     			password: user.password
@@ -16,71 +16,71 @@ angular.module('MyApp')
     		});
     	},
 
-    	signup: function(user){
-    		return $http.post('/signup',
+    	signup: function( user ) {
+    		return $http.post( '/signup',
     		{
     			email : user.email,
     			password: user.password
     		});
     	},
 
-    	addBook: function(book ){
-    		return $http.post('/book',
+    	addBook: function( book ) {
+    		return $http.post( '/book',
 
 	    	{
-	    		_id: book._id,
-				name: book.name,
-				genre: book.genre,
+	    		_id   : book._id,
+				name  : book.name,
+				genre : book.genre,
 				author: book.author,
 				poster: book.poster
 			});
 
 		},
 
-		getBooks: function(){
+		getBooks: function() {
 
 			return $http.get('/books')
 
-			.then(function(response){
+			.then(function( response ) {
 
 				//promise fulfilled
-				if (typeof response.data === 'object'){
+				if ( typeof response.data === 'object' ) {
 
 					return response.data;
-				}else{
+				} else {
 
 					//invalid response
-					return $q.reject(response.data);
+					return $q.reject( response.data );
 				}
 
-			}, function(response){
+			}, function( response ) {
 
 				//promise rejected
-				return $q.reject(response.data);
+				return $q.reject( response.data );
 			});
 		},
 
-		removeBook: function(book){
-			return $http.delete('/remove/'+book._id);
+		removeBook: function( book ) {
+			return $http.delete( '/remove/' + book._id );
 		},
 
 		/* service that makes a request to '/search'
 		   and returns a fulfilled or rejected promise
 		*/
-		searchBook: function(book){
-			return $http.get('/search?name='+book.name)
+		searchBook: function( book ) {
+			return $http.get( '/search?name=' + book.name )
 
-			.then(function(response){
-				if (typeof response.data === 'object'){
+			.then(function( response ) {
+				if ( typeof response.data === 'object' ) {
 
 					//Google Books API returned Error message
-					if (response.data.hasOwnProperty('error')){
-						return $q.reject(response.data.error.message);
+					if ( response.data.hasOwnProperty('error') ) {
+						return $q.reject( response.data.error.message );
 					}
 					return response.data;
 				}else{
 					//promise rejected
-					return $q.reject(response.data);
+					return $q.reject( response.data );
 
 				}
 
@@ -91,15 +91,15 @@ angular.module('MyApp')
 			response and returns an array of
 			Book objects
 		*/
-		parse: function(data){
+		parse: function( data ) {
 			var collection = [],
 				result,
 				i;
 
 			//loop through results to add books
-			for (i = 0; i < (data.items).length; i++){
+			for ( i = 0; i < (data.items).length; i++ ) {
 
-				result= data.items[i];
+				result = data.items[i];
 
 				collection.push(
 
@@ -119,4 +119,4 @@ angular.module('MyApp')
 		}
 
 	};
-}]);
+});

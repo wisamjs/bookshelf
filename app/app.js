@@ -1,6 +1,6 @@
 'use strict';
 angular.module('MyApp', ['ui.router','ngMessages'])
-    .config(function( $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    .config(function( $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider ) {
 
 
 
@@ -12,22 +12,22 @@ angular.module('MyApp', ['ui.router','ngMessages'])
   	$locationProvider.html5Mode(false);
     $urlRouterProvider.otherwise('/');
 
-        $httpProvider.responseInterceptors.push(function($q, $location) {
+        $httpProvider.responseInterceptors.push(function( $q, $location ) {
 
-        return function(promise) {
+        return function( promise ) {
             return promise.then(
                 // Success: just return the response
-                function(response) {
+                function( response ) {
                     return response;
                 },
 
                 // Error: check the error status to get only the 401
-                function(response) {
-                    if (response.status === 401){
+                function( response ) {
+                    if ( response.status === 401 ){
                         $location.url('/');
                     }
 
-                    return $q.reject(response);
+                    return $q.reject( response );
                 }
             );
         };
@@ -35,12 +35,12 @@ angular.module('MyApp', ['ui.router','ngMessages'])
 
     //Routes
     $stateProvider
-        .state('login',{
+        .state( 'login', {
             url:'/',
             templateUrl: 'views/login.html'
         })
 
-        .state('home',{
+        .state( 'home', {
             url: '/home',
             templateUrl: 'views/home.html'
         });

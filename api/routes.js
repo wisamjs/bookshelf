@@ -19,7 +19,7 @@ module.exports = {
   			if ( req.isAuthenticated() ) {
   				next();
   			}
-  			else{
+  			else {
   				res.send( 401 );
   			}
 		}
@@ -119,7 +119,7 @@ module.exports = {
 
 			var respData = '',
 				apiHostname = 'www.googleapis.com',
-				apiPath = '/books/v1/volumes?key='+process.env.API_KEY+'&q=',
+				apiPath = '/books/v1/volumes?key=' + process.env.API_KEY+ '&q=',
 
 				//name param is encoded to be URI syntax friendly
 				options = {
@@ -132,7 +132,7 @@ module.exports = {
 
   				//add chunk of data
   				response.on( 'data', function( chunk ) {
-    				respData += chunk;
+    				respData + = chunk;
   				});
 
   				//response has been received
@@ -150,7 +150,7 @@ module.exports = {
 				Book.remove({ _id: req.params.id }, function( err ) {
 					if ( err ) {
 						return next( err );
-					}else{
+					}else {
 						res.send({ message: 'deleted' });
 					}
 				});
