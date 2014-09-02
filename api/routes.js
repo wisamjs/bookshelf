@@ -132,7 +132,7 @@ module.exports = {
 
   				//add chunk of data
   				response.on( 'data', function( chunk ) {
-    				respData + = chunk;
+    				respData += chunk;
   				});
 
   				//response has been received
