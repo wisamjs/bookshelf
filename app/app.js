@@ -1,4 +1,5 @@
 'use strict';
+
 angular.module('MyApp', ['ui.router','ngMessages'])
     .config(function( $stateProvider, $urlRouterProvider, $locationProvider, $httpProvider ) {
 
