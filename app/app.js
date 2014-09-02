@@ -25,7 +25,7 @@ angular.module('MyApp', ['ui.router','ngMessages'])
                 // Error: check the error status to get only the 401
                 function( response ) {
                     if ( response.status === 401 ){
-                        $location.url('/');
+                        $location.url('/login');
                     }
 
                     return $q.reject( response );
@@ -37,12 +37,12 @@ angular.module('MyApp', ['ui.router','ngMessages'])
     //Routes
     $stateProvider
         .state( 'login', {
-            url:'/',
+            url:'/login',
             templateUrl: 'views/login.html'
         })
 
         .state( 'home', {
-            url: '/home',
+            url: '/',
             templateUrl: 'views/home.html'
         });
 
