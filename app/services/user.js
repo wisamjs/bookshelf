@@ -1,26 +1,23 @@
 'use strict';
 
 angular.module('MyApp')
-	.factory('User', function( $http, $log, $q ) {
-		return {
-			login: function( user ) {
+    .factory('User', function( $http, $log, $q ) {
 
+        var service = {};
 
-	    		return $http.post( '/login',
-	    		{
-	    			email: user.email,
-	    			password: user.password
+        service.login = function( user ) {
+            return $http.post( '/login', {
+                email: user.email,
+                password: user.password
 
-	    		});
-	    	},
+            });
+        };
 
-	    	signup: function( user ) {
-	    		return $http.post( '/signup',
-	    		{
-	    			email : user.email,
-	    			password: user.password
-	    		});
-	    	},
-	    };
-
-		});
+        service.signup = function( user ) {
+            return $http.post( '/signup', {
+                email: user.email,
+                password: user.password
+            });
+        };
+        return service;
+    });
