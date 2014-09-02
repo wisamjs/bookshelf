@@ -2,14 +2,14 @@
 
 angular.module('MyApp')
 	.controller( 'LoginController',
-	function( $scope, $location, $log, Library ) {
+	function( $scope, $location, $log, Library, User) {
 
 		$scope.login  = true;
 		$scope.signup = false;
 
 		//login user
 		$scope.loginUser = function( user ) {
-			Library.login( user )
+			User.login( user )
 
 			.then(function() {
 				//promise fulfilled
@@ -24,7 +24,7 @@ angular.module('MyApp')
 		};
 
 		$scope.signupUser = function( user ){
-			Library.signup( user )
+			User.signup( user )
 
 			.then(function() {
 
