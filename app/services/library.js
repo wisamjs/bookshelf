@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MyApp')
-    .factory( 'Library', function( $http, $log, $q, Book ) {
+    .factory( 'Library', function( $http, $log, $q ) {
 
         var service = {};
 
@@ -20,7 +20,7 @@ angular.module('MyApp')
 
             return $http.get('/books')
 
-            .then(function(response) {
+            .then(function( response ) {
 
                 //promise fulfilled
                 if ( typeof response.data === 'object' ) {
@@ -29,7 +29,7 @@ angular.module('MyApp')
                 } else {
 
                     //invalid response
-                    return $q.reject(response.data);
+                    return $q.reject( response.data );
                 }
 
             }, function( response ) {
@@ -81,18 +81,17 @@ angular.module('MyApp')
 
                 result = data.items[i];
 
-                collection.push(
+                var book = {
+                    _id    : result.id,
+                    name   : result.volumeInfo.title,
+                    author : result.volumeInfo.authors,
+                    rating : result.volumeInfo.averageRating,
+                    genre  : result.volumeInfo.categories,
+                    poster : result.volumeInfo.imageLinks.thumbnail
 
-                    new Book(
+                };
 
-                        result.id,
-                        result.volumeInfo.title,
-                        result.volumeInfo.authors,
-                        result.volumeInfo.averageRating,
-                        result.volumeInfo.categories,
-                        result.volumeInfo.imageLinks.thumbnail
-                    )
-                );
+                collection.push( book );
             }
 
             return collection;
