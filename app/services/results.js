@@ -11,54 +11,59 @@ angular.module('MyApp').factory( 'Results', function() {
 					'next':null
 		};
 
-	return {
-		//add results to allResults object
-		addNewResults: function( results ) {
+	/* helper function to update
+	   current results, next results
+	   and previous results
+	*/
+	var _update = function( current, prev, next ){
+		allResults.current = current;
+		allResults.prev = prev;
+		allResults.next = next;
+	}
+	var service = {};
 
-			allResults.current = results.splice(0,5);
-			allResults.prev = null;
-			allResults.next = results.splice( ( results.length / 2 ), results.length );
-		},
+	//add results to allResults object
+	service.addNewResults = function( results ) {
 
-		//return current Results
-		getCurrentResults: function() {
+		allResults.current = results.splice(0,5);
+		allResults.prev = null;
+		allResults.next = results.splice( ( results.length / 2 ), results.length );
+	};
+
+	//return current Results
+	service.getCurrentResults = function() {
 			return allResults.current;
-		},
+		};
+
+	//return current Results
+	service.getCurrentResults = function() {
+		return allResults.current;
+	};
 
 		/* returns next results if they exist
 		otherwise returns null */
-		getNextResults: function() {
+	service.getNextResults = function() {
 
-			if ( allResults.next !== null ) {
-				this._update( allResults.next, allResults.current, null );
-				return this.getCurrentResults();
-			}else {
-				return null;
-			}
-		},
+		if ( allResults.next !== null ) {
+			_update( allResults.next, allResults.current, null );
+			return service.getCurrentResults();
+		}else {
+			return null;
+		}
+	};
 
-		/* returns prev results if they exist
-		   otherwise returns null */
-		getPrevResults: function() {
+	/* returns prev results if they exist
+	   otherwise returns null */
+	service.getPrevResults = function() {
 
-			if ( allResults.prev === null ) {
-				return null;
-			}else {
-				this._update( allResults.prev, null, allResults.current );
-				return this.getCurrentResults();
-			}
-
-		},
-
-		/* helper function to update
-		   current results, next results
-		   and previous results
-		*/
-		_update: function( current, prev, next ){
-			allResults.current = current;
-			allResults.prev = prev;
-			allResults.next = next;
+		if ( allResults.prev === null ) {
+			return null;
+		}else {
+			_update( allResults.prev, null, allResults.current );
+			return service.getCurrentResults();
 		}
 
 	};
+
+	return service;
 });
