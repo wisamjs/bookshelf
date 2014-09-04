@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MyApp')
-    .factory('User', function( $http, $log, $q ) {
+    .factory('User', function( $http ) {
 
         var service = {};
 

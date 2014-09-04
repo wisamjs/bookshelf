@@ -19,7 +19,7 @@ angular.module('MyApp').factory( 'Results', function() {
 		allResults.current = current;
 		allResults.prev = prev;
 		allResults.next = next;
-	}
+	};
 	var service = {};
 
 	//add results to allResults object

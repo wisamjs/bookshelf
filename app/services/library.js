@@ -37,11 +37,11 @@ angular.module('MyApp')
                 //promise rejected
                 return $q.reject(response.data);
             });
-        }
+        };
 
         service.removeBook = function( book ) {
             return $http.delete('/remove/' + book._id);
-        }
+        };
 
         /* service that makes a request to '/search'
 		   and returns a fulfilled or rejected promise
