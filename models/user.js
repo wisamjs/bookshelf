@@ -2,9 +2,21 @@
 
 var mongoose = require( 'mongoose' ),
     bcrypt = require( 'bcryptjs' ),
+    // bookSchema = require('./book.js'),
+    // var mongoose = require( 'mongoose' ),
+    bookSchema = new mongoose.Schema({
+        _id   : String,
+        name  : String,
+        author: String,
+        rating: Number,
+        genre : String,
+        poster: String,
+    }),
+
     userSchema = new mongoose.Schema({
         email: { type: String, unique: true },
-        password: String
+        password: String,
+        books: [bookSchema]
     });
 
 //Mongoose pre-middleware - hash password

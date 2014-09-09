@@ -22,7 +22,7 @@ module.exports = {
   			else {
   				res.send( 401 );
   			}
-		}
+		};
 
 
 		//signup
@@ -38,7 +38,7 @@ module.exports = {
 					return next( err );
 				}
 				res.send( 200 );
-			})
+			});
 		});
 
 		//login
@@ -48,7 +48,7 @@ module.exports = {
 		});
 
 		//logout
-		app.get( '/logout', function( req, res, next ) {
+		app.get( '/logout', function( req, res ) {
 			req.logout();
 			res.send( 200 );
 		});
@@ -61,7 +61,7 @@ module.exports = {
 
 
 		//add book
-		app.post( '/book', function( req, res, next ) {
+		app.post( '/book', function( req, res ) {
 
 			var book = new Book({
 				_id   : req.body._id,
@@ -74,42 +74,26 @@ module.exports = {
 
 
 
-			book.save(function( err ) {
-				if ( err ) {
-					return next( err );
+			User.findOne({ _id: req.user._id }, function( err, user ) {
+
+				if ( !err ) {
+					user.books.push(book);
+					user.save(function( err ) {
+						if ( !err ) {
+							res.json({ message: 'Book created' });
+						}
+					});
 				}
-				res.json({ message: 'Book created' });
 			});
 		});
 
 		//get all books
 		app.get( '/books', auth, function( req, res ) {
 
-			Book.find(function( err,books ) {
-				res.json(books);
-			});
-		});
-
-		//get book by name
-		app.get( '/books/:name', function( req, res, next ) {
-
-			Book.find({ name:req.params.name }, function( err, book ) {
-				if ( err ) {
-					return next( err );
+			User.findOne({ _id : req.user._id}, function( err, user ) {
+				if ( !err ){
+					res.json( user.books );
 				}
-
-				res.send(book);
-			});
-		});
-
-		//get book by author
-		app.get( '/author/:author', function( req, res, next ) {
-
-			Book.find({ author: req.params.author }, function( err, book ) {
-				if ( err ) {
-					return next( err );
-				}
-				res.send( book );
 			});
 		});
 
@@ -145,15 +129,19 @@ module.exports = {
 
 		});
 
-		//remove a book from Google Books api
-		app.delete( '/remove/:id', function( req, res, next ) {
-				Book.remove({ _id: req.params.id }, function( err ) {
-					if ( err ) {
-						return next( err );
-					}else {
-						res.send({ message: 'deleted' });
-					}
-				});
+		//remove a book from Users books
+		app.delete( '/remove/:id', function( req, res ) {
+
+			User.findOne({ _id : req.user._id }, function( err, user ) {
+				if ( !err ) {
+					user.books.id(req.params.id).remove();
+					user.save( function( err ){
+						if ( !err ) {
+							res.send({ message: 'deleted' });
+						}
+					});
+				}
+			});
 		});
 
 
