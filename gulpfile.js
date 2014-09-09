@@ -11,10 +11,12 @@ var gulp = 		 require( 'gulp' ),
 	jsControllers = 'app/controllers/*.js',
 	jsServices = 'app/services/*.js',
 	jsServer = '*.js',
+	jsApi = 'api/*.js',
 	jsAngular = 'app/app.js',
 	jsFiles = [ jsControllers,
 				jsServices,
 				jsServer,
+				jsApi,
 				jsAngular];
 
 
